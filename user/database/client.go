@@ -10,7 +10,7 @@ import (
 )
 
 func GetDBClient() *mongo.Client {
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://"+os.Getenv("DBUSER")+":"+os.Getenv("DBPASS")+"@localhost:27017"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://"+os.Getenv("DBUSER")+":"+os.Getenv("DBPASS")+"@mongo:27017"))
 	if err != nil {
 		fmt.Println("Issue connecting to mongodb")
 		panic(err)

@@ -8,7 +8,7 @@ import (
 )
 
 func GetDBClient() *mongo.Client {
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://root:root@localhost:27017"))
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://root:root@mongo:27017"))
 	if err != nil {
 		panic(err)
 	}

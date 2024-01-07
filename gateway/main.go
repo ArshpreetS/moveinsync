@@ -32,7 +32,7 @@ func main() {
 
 			switch serviceName {
 			case "admin":
-				res, err := http.Get(fmt.Sprint(os.Getenv("ROOTADDR"), ":", os.Getenv("ADMINPORT"), "/api/v1/", service))
+				res, err := http.Get(fmt.Sprint(os.Getenv("ADMINADDR"), ":", os.Getenv("ADMINPORT"), "/api/v1/", service))
 				if err != nil {
 					fmt.Println(err)
 					c.String(http.StatusInternalServerError, "Error sending request to admin")
@@ -51,7 +51,7 @@ func main() {
 				c.Data(res.StatusCode, res.Header.Get("Content-Type"), responseBody)
 			case "user":
 
-				res, err := http.Get(fmt.Sprint(os.Getenv("ROOTADDR"), ":", os.Getenv("ADMINPORT"), "/api/v1/", service))
+				res, err := http.Get(fmt.Sprint(os.Getenv("USERADDR"), ":", os.Getenv("ADMINPORT"), "/api/v1/", service))
 				if err != nil {
 					fmt.Println(err)
 					c.String(http.StatusInternalServerError, "Error sending request to admin")
@@ -84,7 +84,7 @@ func main() {
 			switch serviceName {
 			case "admin":
 
-				res, err := http.Post(fmt.Sprint(os.Getenv("ROOTADDR"), ":", os.Getenv("ADMINPORT"), "/api/v1/", service), "application/json", bytes.NewBuffer(byteData))
+				res, err := http.Post(fmt.Sprint(os.Getenv("ADMINADDR"), ":", os.Getenv("ADMINPORT"), "/api/v1/", service), "application/json", bytes.NewBuffer(byteData))
 				if err != nil {
 					fmt.Println(err)
 					c.String(http.StatusInternalServerError, "Error sending request to admin")
@@ -101,7 +101,7 @@ func main() {
 				c.Data(res.StatusCode, res.Header.Get("Content-Type"), responseData)
 			case "user":
 
-				res, err := http.Post(os.Getenv("ROOTADDR")+":"+os.Getenv("USERPORT")+"/api/v1/"+string(service), "application/json", bytes.NewBuffer(byteData))
+				res, err := http.Post(os.Getenv("USERADDR")+":"+os.Getenv("USERPORT")+"/api/v1/"+string(service), "application/json", bytes.NewBuffer(byteData))
 				if err != nil {
 					fmt.Println(err)
 					c.String(http.StatusInternalServerError, "Error sending request to user")
