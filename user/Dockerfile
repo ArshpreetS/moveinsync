@@ -8,7 +8,7 @@ RUN go mod download
 
 COPY ./ /app/
 
-RUN go build -o user
+RUN go build -o user .
 
 FROM alpine:latest
 
@@ -18,4 +18,4 @@ COPY --from=builder /app/user /app/
 
 EXPOSE 9002
 
-CMD ["./app/user"]
+CMD ["./user"]

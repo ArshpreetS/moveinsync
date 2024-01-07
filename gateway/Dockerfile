@@ -8,7 +8,7 @@ RUN go mod download
 
 COPY ./ /app/
 
-RUN go build -o gateway
+RUN go build -o gateway .
 
 FROM alpine:latest
 
@@ -18,4 +18,4 @@ COPY --from=builder /app/gateway /app/
 
 EXPOSE 9000
 
-CMD ["./app/gateway"]
+CMD ["./gateway"]
