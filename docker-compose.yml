@@ -22,7 +22,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: "root"  
     volumes:
       - ./admin/data:/data/db
-      - ./init_mongodb.js:/docker-entrypoint-initdb.d/init_mongodb.js:ro
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     ports:
       - "27017:27017"
   
