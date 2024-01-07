@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: moveinsync
+    volumes:
+      - ./user/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME=root   
+      MONGO_INITDB_ROOT_PASSWORD=root  
+    volumes:
+      - ./admin/data:/data/db
+      - ./init_mongodb.js:/docker-entrypoint-initdb.d/init_mongodb.js:ro
+    ports:
+      - "27017:27017"
+  
+  
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: root 
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    ports:
+      - "8081:8081"
+
+  admin:
+    build: ./admin
+    container_name: admin
+    ports:
+      - "9001:9001"
+
+  gateway:
+    build: ./gateway
+    container_name: gateway
+    ports:
+      - "9000:9000"
+
+  user:
+    build: ./user
+    container_name: user
+    ports:
+      - "9002:9002"
+  
