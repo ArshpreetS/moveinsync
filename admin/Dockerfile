@@ -1,4 +1,4 @@
-FROM golang:latest AS builder
+FROM golang:latest 
 
 WORKDIR /app
 
@@ -9,12 +9,6 @@ RUN go mod download
 COPY ./ /app/
 
 RUN go build -o admin .
-
-FROM alpine:latest
-
-WORKDIR /app 
-
-COPY --from=builder /app/admin /app/
 
 EXPOSE 9001
 
