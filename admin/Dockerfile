@@ -18,4 +18,4 @@ COPY --from=builder /app/admin /app/
 
 EXPOSE 9001
 
-CMD ["./admin"]
+CMD ["./app/admin"]

@@ -18,4 +18,4 @@ COPY --from=builder /app/gateway /app/
 
 EXPOSE 9000
 
-CMD ["./gateway"]
+CMD ["./app/gateway"]

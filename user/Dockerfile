@@ -18,4 +18,4 @@ COPY --from=builder /app/user /app/
 
 EXPOSE 9002
 
-CMD ["./user"]
+CMD ["./app/user"]
