@@ -3,4 +3,4 @@
 
 ## Architecture
 
-![architecture]("./screenshots/architecture.png")
+![architecture](./screenshots/architecture.png)
