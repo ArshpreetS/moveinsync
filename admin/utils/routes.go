@@ -21,6 +21,10 @@ func GetRoutes() *gin.Engine {
 		v1.POST("/add-trip", func(c *gin.Context) {
 			controllers.HandlerAddTrip(c)
 		})
+
+		v1.GET("/list-buses", func(c *gin.Context) {
+			controllers.ListBuses(c)
+		})
 	}
 	return r
 }
